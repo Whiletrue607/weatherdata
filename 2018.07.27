@@ -1,0 +1,97 @@
+크롤링 예시
+
+install.packages('rvest')
+library(rvest)
+url<-"http://news.naver.com/main/read.nhn?mode=LS2D&mid=shm&sid1=102&sid2=250&oid=025&aid=0002763120"
+(nv<-read_html(url))
+(nvns<-html_nodes(nv, "h3#articleTitle"))
+nvns
+url <- 'http://kobis.or.kr/kobis/business/stat/boxs/findDailyBoxOfficeList.do?loadEnd=0&searchType=excel&sSearchFrom=2018-07-19&sSearchTo=2018-07-19&sMultiMovieYn=&sRepNationCd=&sWideAreaCd='
+(nv<-read_html(url))
+
+(nvns<-html_nodes(nv, "td"))
+sub_url_1 = 'http://kobis.or.kr/kobis/business/stat/boxs/findDailyBoxOfficeList.do?loadEnd=0&searchType=excel&sSearchFrom='
+sub_url_2 = '&sSearchTo='
+sub_url_3 = '&sMultiMovieYn=&sRepNationCd=&sWideAreaCd='
+
+paste0('a','b')
+
+url = paste0(sub_url_1,'2014-01-01',sub_url_2,'2014-01-01',sub_url_3)
+url
+install.packages('tibble')
+library(tibble)
+
+movie_data <- tibble(
+  
+  rank = numeric(),
+  movie_name = character(),
+  movie_start_date = numeric()
+  
+)
+movie_data[1:3,] <-0
+movie_data
+
+url
+
+html = read_html(url)
+temp = html_nodes(html,'td')
+temp <- as.character(temp)
+
+temp <- gsub('<td>','',temp)
+temp <- gsub('\r','',temp)
+temp <- gsub('\n','',temp)
+temp <- gsub('\t','',temp)
+temp <- gsub('</td>','',temp)
+temp <- gsub('<td style=\"mso-number-format:\\\\#\\\\,\\\\#\\\\#0\\\\\">','',temp)
+temp <- gsub('<td style=\"mso-number-format:0.0%\">','',temp)
+
+movie_data[1,] <- temp[1:3]
+movie_data[2,] <- temp[(22+1):(22+3)]
+
+
+movie_data
+
+for (i in 1:(length(temp)/22 -1)){
+  
+  movie_data[i,] <- temp[(22*(i-1)+1):(22*(i-1)+3)]
+  
+}
+movie_data
+
+
+
+year = '2016'
+
+as.Date('2014-01-01') + 100
+
+count = 0
+cum_count = 0
+
+for (i in 1:10){
+  
+  
+  url = paste0(sub_url_1,as.Date('2014-01-01')+i-1,sub_url_2,as.Date('2014-01-01')+i-1,sub_url_3)
+  
+  html = read_html(url)
+  temp = html_nodes(html,'td')
+  temp <- as.character(temp)
+  
+  temp <- gsub('<td>','',temp)
+  temp <- gsub('\r','',temp)
+  temp <- gsub('\n','',temp)
+  temp <- gsub('\t','',temp)
+  temp <- gsub('</td>','',temp)
+  temp <- gsub('<td style=\"mso-number-format:\\\\#\\\\,\\\\#\\\\#0\\\\\">','',temp)
+  temp <- gsub('<td style=\"mso-number-format:0.0%\">','',temp)
+  
+  count = length(temp)/22 - 2
+  
+  for (j in 1:count){
+    movie_data[(cum_count+j),1:3] <- temp[(22*(j-1)+1):(22*(j-1)+3)]
+  }
+  cum_count = count + cum_count
+  print(as.Date(paste0(year,'-01-01'))+i-1)
+}
+write.csv(movie_data,'result.csv')
+
+
