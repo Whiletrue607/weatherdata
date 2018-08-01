@@ -1,0 +1,22 @@
+네이버 스포츠 랭킹 뉴스 가져오기(미완)
+
+
+library(rvest)
+library(tibble)
+news_data = tibble(
+   date = numeric(),
+   main_title= character()
+)
+news_data[1:10,]=0
+news_data
+for(i in 1:10){
+   Date = gsub('-','',as.Date('2018-01-01')+i-1)
+   sub_url_1 = "https://sports.news.naver.com/ranking/index.nhn?date="
+   url = paste0(sub_url_1,Date)
+   (nv=read_html(url))
+   nvns=html_nodes(nv,"li.best")%>%html_nodes("div.text")%>%html_nodes("span")%>%html_text()
+   nvns=as.character(nvns)
+   news_data[i,1]= Date 
+   news_data[i,2]= nvns[1]
+}
+news_data
