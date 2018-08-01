@@ -1,0 +1,38 @@
+library(rvest)
+library(tibble)
+
+book_data = tibble( 
+	date = numeric(),
+	main_title= character()
+)
+
+book_data[1:12,]=0
+
+for(j in 2008:2017){
+
+for(i in 1:12){
+   Year = j
+   Month = i
+   sub_url_1 = "http://www.yes24.com/24/category/bestseller?CategoryNumber=001&sumgb=09&year="
+   sub_url_2 = "&month="
+   url = paste0(sub_url_1,Year,sub_url_2,Month)
+   (nv=read_html(url))
+   nvns=html_nodes(nv,".goodsTxtInfo>p")%>%html_nodes("a")%>%html_text()
+   book_data[i,1]= paste0(j,"년",Month,"월 베스트셀러")
+   book_data[i,2]= nvns[1]
+}
+
+print(book_data)
+}
+
+book_data[1:12,]=0
+for(i in 1:8){
+   Month = i
+   sub_url_1 = "http://www.yes24.com/24/category/bestseller?CategoryNumber=001&sumgb=09&year=2018&month="
+   url = paste0(sub_url_1,Month)
+   (nv=read_html(url))
+   nvns=html_nodes(nv,".goodsTxtInfo>p")%>%html_nodes("a")%>%html_text()
+   book_data[i,1]= paste0("2018년",Month,"월 베스트셀러")
+   book_data[i,2]= nvns[1]
+}
+book_data
