@@ -1,3 +1,5 @@
+ì˜ˆìŠ¤24ì˜ ì£¼ê°„ ë² ìŠ¤íŠ¸ ì…€ëŸ¬(1ìœ„) ë°ì´í„°
+
 library(rvest)
 library(tibble)
 
@@ -18,7 +20,7 @@ for(i in 1:12){
    url = paste0(sub_url_1,Year,sub_url_2,Month)
    (nv=read_html(url))
    nvns=html_nodes(nv,".goodsTxtInfo>p")%>%html_nodes("a")%>%html_text()
-   book_data[i,1]= paste0(j,"³â",Month,"¿ù º£½ºÆ®¼¿·¯")
+   book_data[i,1]= paste0(j,"ë…„",Month,"ì›” ë² ìŠ¤íŠ¸ì…€ëŸ¬")
    book_data[i,2]= nvns[1]
 }
 
@@ -32,7 +34,7 @@ for(i in 1:8){
    url = paste0(sub_url_1,Month)
    (nv=read_html(url))
    nvns=html_nodes(nv,".goodsTxtInfo>p")%>%html_nodes("a")%>%html_text()
-   book_data[i,1]= paste0("2018³â",Month,"¿ù º£½ºÆ®¼¿·¯")
+   book_data[i,1]= paste0("2018ë…„",Month,"ì›” ë² ìŠ¤íŠ¸ì…€ëŸ¬")
    book_data[i,2]= nvns[1]
 }
 book_data
