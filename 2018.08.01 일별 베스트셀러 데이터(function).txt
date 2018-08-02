@@ -28,7 +28,7 @@ book_data[1:C,]=0
 book_data
 
 for(i in 1:C){
-   date = as.Date("2018-01-01")+i-1
+   date = as.Date(A)+i-1
    year = substr(date,1,4)
    month = substr(date,6,7)
    day = substr(date,9,10)
