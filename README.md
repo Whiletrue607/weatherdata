@@ -1,4 +1,4 @@
-## 기상데이터 수집을 위한 크롤링(Scrapping)
+# 기상데이터 수집을 위한 크롤링(Scrapping)
 
 
 * 목표: 크로링 기버블 익히고 이를 활용하여 기상데이터를 수집한다.
@@ -23,7 +23,7 @@
 |8월 10일 ~ 31일| 기상데이터 scrapping|
 
 
-*
+---
 ### 참고
 1. 네이버 뉴스 크롤링 패키지 : https://github.com/forkonlp/N2H4
 2. 데이터 처리 패키지 : https://www.tidyverse.org/
