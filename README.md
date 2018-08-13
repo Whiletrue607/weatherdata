@@ -24,4 +24,6 @@
 
 
 ---
-#
+# 참고
+1. 네이버 뉴스 크롤링 패키지 : https://github.com/forkonlp/N2H4
+2. 데이터 처리 패키지 : https://www.tidyverse.org/
