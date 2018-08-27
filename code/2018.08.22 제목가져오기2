@@ -1,0 +1,14 @@
+library(jsonlite)
+library(stringr)
+library(httr)
+library(dplyr)
+for(i in 1:31){
+date = as.Date('2018-01-01')+i-1
+date = gsub('-','',date)
+sub_url_1 = 'https://sports.news.naver.com/ranking/index.nhn?date='
+url = paste0(sub_url_1,date)
+json=str_match(GET(url),regex('rankingListModel: (\\{.*\\})',multiline=T))[2]
+result=fromJSON(json)[[1]]%>%tbl_df()
+news = result%>%select(date,title)
+write.table(news,file='news.csv',append = TRUE)
+}
