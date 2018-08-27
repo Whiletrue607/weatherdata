@@ -1,0 +1,22 @@
+var webPage = require('webpage');
+var page = webPage.create();
+
+var fs = require('fs');
+var path = 'temp.html'
+
+page.open('https://sports.news.naver.com/ranking/index.nhn?date=20180810', function (status) {
+  var content = page.content;
+  fs.write(path,content,'w')
+  phantom.exit();
+});
+
+위에 코드를 메모장에 적어서 temp.js로 저장하고
+
+system("phantomjs temp.js")
+
+을 r에 실행시켜서 temp.html로 변환하고
+
+nvns <- read_html("temp.html") %>%
+   html_nodes("span")%>%html_text()
+
+을 r에 실행시키면 숨어있던 java script에서의 span태그 내용들이 나옵니다 
