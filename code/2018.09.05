@@ -1,0 +1,38 @@
+library(jsonlite)
+library(stringr)
+library(httr)
+library(dplyr)
+library(RSelenium)
+library(wdman)
+library(data.table)
+library(rvest)
+
+
+
+#감정에 따른 크롤링
+
+url ="https://sports.news.naver.com/kbo/news/read.nhn?oid=477&aid=0000136813"
+
+oid = "477"
+aid = "0000136813"
+RD_url1 <- "https://sports.like.naver.com/v1/search/contents?suppress_response_codes=true&q=SPORTS%5Bne_"
+RD_url2 <- paste0(oid,"_",aid,"%5D%7CSPORTS_MAIN%5Bne_",oid,"_",aid,"%5D&isDuplication=false")
+
+
+RD_url <-paste0(RD_url1,RD_url2)
+
+reaction_data <- content(GET(RD_url), "text",encoding = "utf-8")
+reaction_data <- gsub("(;|\n|_callback)", "", reaction_data)
+reaction_data <- gsub("(;|\n|_callback=//)", "", reaction_data)
+reaction_data <- gsub("\\(", "[", reaction_data)
+reaction_data <- gsub("\\)", "]", reaction_data)
+
+json_reaction_data <- fromJSON(reaction_data)
+
+RD <- json_reaction_data$contents[[5]][[1]]
+RD_count <- RD %>% select(count,period)
+RD_react <- RD[[5]] %>% select(description,)
+RD_period <- RD %>% select(period)
+RD_list <- cbind(RD_react,RD_count)
+RD_list
+               
