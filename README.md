@@ -34,7 +34,7 @@
 |제목 가져오기 2|8월 22일|[바로가기](https://github.com/Whiletrue607/weatherdata/blob/master/code/2018.08.22%20%EC%A0%9C%EB%AA%A9%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B02)|
 |댓글 가져오기|8월 27일|[바로가기](https://github.com/Whiletrue607/weatherdata/blob/master/code/2018.08.27%20%EB%8C%93%EA%B8%80%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0)|
 |감정 가져오기|9월 5일|[바로가기](https://github.com/Whiletrue607/weatherdata/blob/master/code/2018.09.05%20%EA%B0%90%EC%A0%95%20%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0)|
-|sports news 가져오기|9월 11일|[바로가기](https://github.com/Whiletrue607/weatherdata/blob/master/code/2018.09.11%20sports%20news%20%EA%B0%80%EC)|
+|sports news 가져오기|9월 11일|[바로가기](https://github.com/Whiletrue607/weatherdata/blob/master/code/2018.09.11%20sports%20news%20%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0)|
 
 
 ---
