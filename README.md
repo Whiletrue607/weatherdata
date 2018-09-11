@@ -20,7 +20,7 @@
 |7월 15일 ~ 31일| R scrapping을 위한 패키지 학습 및, 여러 예제들을 따라해 보며 기본을 다진다.|
 |8월 1일 ~ 8월 10일| 개별 목표 설정 및 scrapping실습|
 |8월 8일 ~ 10일| R 전문가의 지도를 받는다.|
-|8월 10일 ~ 31일| 뉴스데이터 scrapping|
+|8월 10일 ~ 9월 11일| 뉴스데이터 scrapping|
 
 ---
 ## 프로젝트 진행사항
@@ -30,6 +30,12 @@
 |네이버 스포츠 랭킹 뉴스|7월 30일~ 8월 10일|[바로가기](https://github.com/Whiletrue607/weatherdata/blob/master/code/2081.08.10%20%EC%A0%9C%EB%AA%A9%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0)|
 |yes24 주간 베스트 셀러셀러|8월 1일|[바로가기](https://github.com/Whiletrue607/weatherdata/blob/master/code/2018.08.01%20%EC%9D%BC%EB%B3%84%20%EB%B2%A0%EC%8A%A4%ED%8A%B8%EC%85%80%EB%9F%AC%20%EB%8D%B0%EC%9D%B4%ED%84%B0(function).txt)|
 |yes24 주간 베스트 셀러|8월 1일|[바로가기](https://github.com/Whiletrue607/weatherdata/blob/master/code/2018.08.01%20%EC%A3%BC%EA%B0%84%20%EB%B2%A0%EC%8A%A4%ED%8A%B8%EC%85%80%EB%9F%AC%20%EB%8D%B0%EC%9D%B4%ED%84%B0.txt)|
+|제목 가져오기 1|8월 10일|[바로가기](https://github.com/Whiletrue607/weatherdata/blob/master/code/2018.08.10%20%EC%A0%9C%EB%AA%A9%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0)|
+|제목 가져오기 2|8월 22일|[바로가기](https://github.com/Whiletrue607/weatherdata/blob/master/code/2018.08.22%20%EC%A0%9C%EB%AA%A9%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B02)|
+|댓글 가져오기|8월 27일|[바로가기](https://github.com/Whiletrue607/weatherdata/blob/master/code/2018.08.27%20%EB%8C%93%EA%B8%80%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0)|
+|감정 가져오기|9월 5일|[바로가기](https://github.com/Whiletrue607/weatherdata/blob/master/code/2018.09.05%20%EA%B0%90%EC%A0%95%20%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0)|
+|sports news 가져오기|9월 11일|[바로가기](https://github.com/Whiletrue607/weatherdata/blob/master/code/2018.09.11%20sports%20news%20%EA%B0%80%EC)|
+
 
 ---
 ### 참고
