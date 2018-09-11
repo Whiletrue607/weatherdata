@@ -1,0 +1,78 @@
+library(jsonlite)
+library(stringr)
+library(httr)
+library(dplyr)
+library(RSelenium)
+library(wdman)
+library(data.table)
+
+################# 일단은 스포츠 부분만 가능 다른 카테고리는 url 포멧이 달라서 안될 수 도 #############
+
+start_date = '2018-01-01'               
+period = 2                              
+news_path = 'c:\\Temp\\news.csv'        
+comment_path = 'c:\\Temp\\comment.csv'  
+cnt = 1
+total_news_list=list()
+total_cmt_list=list()
+
+for(i in 1:period) {
+    date = as.Date(start_date)+i-1
+    date = gsub('-','',date)
+   sub_url_1 = 'https://sports.news.naver.com/ranking/index.nhn?date='
+   url = paste0(sub_url_1, date)                                           
+   
+   
+   json = str_match(GET(url),regex('rankingListModel: (\\{.*\\})',multiline=T))[2]
+   result = fromJSON(json)
+   
+
+   result[[1]]$title <- gsub(",", ".", result[[1]]$title) # csv로 저장시 column구분을 위한 character 교체
+   result[[1]]$title <- gsub("\"", "'", result[[1]]$title)
+   
+   
+    tmp_news_list = result[[1]] %>% tbl_df() %>% select(date,rank,title)
+
+   total_news_list <- rbind(total_news_list, tmp_news_list)
+   
+   news_id <- result[[1]] %>% select(oid,aid)                  #각 뉴스기사 페이지를 구분하는 id의 list 
+    len <- length(row(tmp_news_list))/length(tmp_news_list)     #크롤링한 뉴스기사 갯수
+       
+    #각 뉴스기사에 따른 댓글 크롤링
+   for(j in 1:len) {
+     oid <- news_id[j,1]
+     aid <- news_id[j,2]
+     news_url <- 'https://sports.news.naver.com/afc/news/read.nhn?'
+     news_url <- paste0(news_url, "oid=", oid, "&aid=", aid)
+
+     tmp_url1 = 'https://apis.naver.com/commentBox/cbox/web_naver_list_jsonp.json?ticket=sports&templateId=&pool=cbox2&lang=ko&country=KR&objectId='
+     tmp_url3 = '&categoryId=&pageSize=10&indexSize=10&groupId=&listType=OBJECT&pageType=more&page=1&initialize=true&userType=&useAltSort=true&replyPageSize=20&moveTo=&sort=sort'
+     tmp_url2 = paste0('news',oid,'%2C',aid)
+
+     req_url = paste0(tmp_url1, tmp_url2, tmp_url3) 
+     req_ref = news_url
+
+     #댓글 요청 / 요청 승인을 위해 Referer로 뉴스 url를 헤더에 추가
+     ret <- GET(req_url, add_headers(Referer = req_ref))
+
+     #json 포멧으로 바꾸기 위한 작업
+     txt_data = content(ret, "text")
+     txt_data <- gsub("(;|\n|_callback)", "", txt_data)
+     txt_data <- gsub("\\(", "[", txt_data)
+     txt_data <- gsub("\\)", "]", txt_data)
+
+     json_data <- fromJSON(txt_data)$result$commentList[[1]]
+     
+     tmp_cmt_list <- json_data %>% tbl_df() %>% select(userName, contents)
+     tmp_cmt_list <- cbind( "comment ID" = rownames(tmp_cmt_list), tmp_cmt_list)   #댓글에 뉴스기사에 따른 고유 id부여
+     tmp_cmt_list <- cbind( "news ID" = cnt, tmp_cmt_list)                         #댓글의 뉴스기사 구분을 위한 news ID column추가
+
+     total_cmt_list <- rbind(total_cmt_list, tmp_cmt_list)
+     cnt = cnt+1
+   }
+}
+total_news_list <- cbind( "news ID" = rownames(total_news_list), total_news_list)   #각 뉴스에 고유id부여
+
+#csv로 저장
+write.table(total_news_list, file = news_path, row.names=FALSE, na="",col.names=TRUE, sep = ",")
+write.table(total_cmt_list, file = comment_path, row.names=FALSE, na="",col.names=TRUE, sep = ",")
