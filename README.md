@@ -27,7 +27,7 @@
 |내용|날짜|링크|
 |---|---|---|
 |영화데이터|7월 27일|[바로가기](https://github.com/Whiletrue607/weatherdata/blob/master/code/2018.07.27%20%EC%98%81%ED%99%94%EB%8D%B0%EC%9D%B4%ED%84%B0)|
-|네이버 스포츠 랭킹 뉴스|7월 30일~ 8월 10일|[바로가기](https://github.com/Whiletrue607/weatherdata/blob/master/code/2081.08.10%20%EC%A0%9C%EB%AA%A9%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0)|
+|네이버 스포츠 랭킹 뉴스|7월 30일~ 8월 10일|[바로가기](https://github.com/Whiletrue607/weatherdata/blob/master/code/2018.08.10%20%EC%A0%9C%EB%AA%A9%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0)|
 |yes24 주간 베스트 셀러셀러|8월 1일|[바로가기](https://github.com/Whiletrue607/weatherdata/blob/master/code/2018.08.01%20%EC%9D%BC%EB%B3%84%20%EB%B2%A0%EC%8A%A4%ED%8A%B8%EC%85%80%EB%9F%AC%20%EB%8D%B0%EC%9D%B4%ED%84%B0(function).txt)|
 |yes24 주간 베스트 셀러|8월 1일|[바로가기](https://github.com/Whiletrue607/weatherdata/blob/master/code/2018.08.01%20%EC%A3%BC%EA%B0%84%20%EB%B2%A0%EC%8A%A4%ED%8A%B8%EC%85%80%EB%9F%AC%20%EB%8D%B0%EC%9D%B4%ED%84%B0.txt)|
 |제목 가져오기 1|8월 10일|[바로가기](https://github.com/Whiletrue607/weatherdata/blob/master/code/2018.08.10%20%EC%A0%9C%EB%AA%A9%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0)|
